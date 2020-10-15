@@ -33,9 +33,16 @@ h3 {
   margin-top: 10px;
 }
 
-.game-container{
+.game-section-container{
   border: 8px solid #000000;
   display: inline-block;
   width: 425px;
+  margin: 10px
+}
+
+.game-article-container {
+  border: 8px solid #000000;
+  display: inline-block;
+  width: 300px;
   margin: 10px
 }

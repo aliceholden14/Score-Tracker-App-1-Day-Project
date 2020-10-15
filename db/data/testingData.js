@@ -16,7 +16,17 @@ testData = [
     {playername: 'jessica', playerid: 15, score: 46, gametype: 'movie'},
     {playername: 'joe', playerid: 16, score: 435, gametype: 'movie'},
     {playername: 'jon', playerid: 17, score: 2354, gametype: 'movie'},
-    {playername: 'katie', playerid: 18, score: 4545, gametype: 'gartico'}
+    {playername: 'katie', playerid: 18, score: 4545, gametype: 'gartico'},
+    {playername: 'amelia', playerid: 10, score: 234, gametype: 'mind'},
+    {playername: 'anna', playerid: 11, score: 435, gametype: 'gartico'},
+    {playername: 'becky', playerid: 12, score: 346, gametype: 'gartico'},
+    {playername: 'bradley', playerid: 13, score: 43, gametype: 'gartico'},
+    {playername: 'carl', playerid: 14, score: 345, gametype: 'movie'},
+    {playername: 'amelia', playerid: 10, score: 234, gametype: 'mind'},
+    {playername: 'anna', playerid: 11, score: 435, gametype: 'gartico'},
+    {playername: 'becky', playerid: 12, score: 346, gametype: 'gartico'},
+    {playername: 'bradley', playerid: 13, score: 43, gametype: 'gartico'},
+    {playername: 'carl', playerid: 14, score: 345, gametype: 'movie'}
 ];
 
 module.exports = testData;

@@ -13,6 +13,7 @@ The rest is up to you!
 
 
 ##functions
+GET top 10 scores for any game
 view scores (front page)
 view scores (small pages)
 add new scores 
