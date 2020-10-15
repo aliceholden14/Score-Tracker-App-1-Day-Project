@@ -10,8 +10,20 @@ a {
   color: #00B7FF;
 }
 
+header {
+  text-align: center;
+}
+
 h1 {
-  font-size: 100px;
+  font-size: 80px;
+}
+
+h2 {
+  font-size: 30px;
+}
+
+h3 {
+  font-size: 20px;
 }
 
 .outerContainer {
@@ -19,4 +31,11 @@ h1 {
   margin: auto;
   border: 8px solid #000000;
   margin-top: 10px;
+}
+
+.game-container{
+  border: 8px solid #000000;
+  display: inline-block;
+  width: 425px;
+  margin: 10px
 }
