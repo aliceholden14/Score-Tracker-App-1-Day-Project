@@ -10,3 +10,15 @@ We will be building our first full stack app. It will be a chance to embed every
 - Must have a front end which allows users to at least view the data
 
 The rest is up to you!
+
+
+##functions
+view scores (front page)
+view scores (small pages)
+add new scores 
+delete scores
+update scores
+get scores for a single user
+
+##tables
+scores table
