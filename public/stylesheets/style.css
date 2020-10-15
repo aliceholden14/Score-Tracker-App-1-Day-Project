@@ -1,8 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px "roboto", Helvetica, Arial, sans-serif;
+  border: 8px solid #000000;
 }
 
 a {
   color: #00B7FF;
+}
+
+h1 {
+  font-size: 100px;
+}
+
+.outerContainer {
+  width: 950px;
+  margin: auto;
+  border: 8px solid #000000;
+  margin-top: 10px;
 }
