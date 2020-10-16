@@ -7,21 +7,32 @@ const {
   addNewPlayerScores,
   deleteGametype,
   getUniquePlayerNames,
-}=require('../model/scores')
+  deletePlayer,
+} = require('../model/scores')
 
 /* GET home page. */
 // router.get('/', function(req, res, next) {
 //   res.render('index', { title: 'Express' });
 // });
 
-// router.get('/', (req, res) => {
-//   res.sendFile(path.join(`${__dirname}/index.html`));
-// });
-
 router.get('/scores', async (req, res) => {
-  const uniqueGames = await getUniqueGameTypes();
-  res.json({ result: uniqueGames });
-})
+  // res.sendFile(path.join(`${__dirname}/index.html`));
+
+  if (req.query.uniquePlayers) { //getUniquePlayers()
+    // console.log(`****getUniquePlayers***`)
+    const uniquePlayers = await getUniquePlayerNames();
+    res.json({ result: uniquePlayers });
+    return;
+  }
+
+  if (req.query.uniqueGametypes) {
+    const uniqueGames = await getUniqueGameTypes();
+    // console.log(`****getUniqueGameTypes***`)
+    res.json({ result: uniqueGames })
+    return;
+  }
+
+});
 
 router.get('/scores/:game', async (req, res) => {
   const game = req.params.game;
@@ -29,22 +40,30 @@ router.get('/scores/:game', async (req, res) => {
   res.json({ result: gameScoreResult });
 });
 
-router.post('/scores', async (req, res) => {
+router.post('/scores', async (req, res) => { //ignore
   const response = await addNewPlayerScores(req.body)
-  res.send( response )
+  res.send(response)
 });
 
-router.delete('/scores', async (req, res) => {
-  //console.log(req.query.game);
-  const response = await deleteGametype(req.query.game);
-})
+router.delete('/scores', async (req, res) => { //ignore
+  if(req.query.player){
+    const response = await deletePlayer(req.query.player);
+    return res.json({ success: true })
+  }
 
-router.get('/scores/players', async (req, res) => {
-  //console.log(req.query.players);
-  const uniquePlayers = await getUniquePlayerNames();
-  //console.log(uniquePlayers);
-  res.json({ result: uniquePlayers });
-})
+  const response = await deleteGametype(req.query.game);
+  res.json({ success: true })
+});
+
+// router.delete('/scores', async (req, res) => { //ignore
+//   const response = await deleteGametype(req.query.game);
+// })
 
 
 module.exports = router;
+
+// router.get('/scores', async (req, res) => {
+//   const uniqueGames = await getUniqueGameTypes();
+//   console.log(`****DSFSDSDFSDF*S***`)
+//   res.json({ result: uniqueGames });
+// });

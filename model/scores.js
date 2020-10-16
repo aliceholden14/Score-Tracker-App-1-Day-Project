@@ -14,13 +14,14 @@ module.exports = {
     addNewPlayerScores: async (newScores) => {
         const sqlAddNewScores = "INSERT INTO scores (playername, score, gametype) VALUES ($1, $2, $3)";
         newScores.forEach(async (value) => {
-            const response = await query(sqlAddNewScores, [value.playername, value.score, value.gametype]);
+            const response = await query(sqlAddNewScores, [value.playername.toLowerCase(), value.score, value.gametype.toLowerCase()]);
             return { success: true };
         })
     },
     getUniquePlayerNames: async _ => {
-        const sqlUniquePlayerNames = "SELECT DISTINCT(playername) FROM scores";
+        const sqlUniquePlayerNames = "SELECT DISTINCT(playername) FROM scores ORDER BY playername ASC";
         const playerNames = await query(sqlUniquePlayerNames);
+        // console.log(playerNames)
         return playerNames.rows;
     },
     deleteGametype: async (gametype) => {
@@ -28,5 +29,10 @@ module.exports = {
         await query(sqlGameType, [gametype]);
         return { success : true };
     },
+    deletePlayer: async (player) => {
+        const sqlDeletePlayer = "DELETE FROM scores WHERE playername = $1";
+        await query(sqlDeletePlayer, [player]);
+        // return { success : true };
+    }
     
  }

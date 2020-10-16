@@ -123,6 +123,11 @@ button {
   text-transform: capitalize;
 }
 
+#danger-zone article label {
+  font-size: 18px;
+  font-weight: 600;
+}
+
 #alltime-scoreboard {
   border: 5px solid #6FC3DF;
   margin-top: 10px;
@@ -134,8 +139,20 @@ button {
   margin-top: 10px;
   padding: 0px 10px 20px 20px;
 }
+/*TODO ADD INPUT BOX THINGS HERE*/
+#remove-player-dropdown {
+  width: 150px;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 5px;
+}
 
-
+#remove-gametype-dropdown {
+  width: 230px;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 5px;
+}
 
 .glow {
   font-size: 80px;
