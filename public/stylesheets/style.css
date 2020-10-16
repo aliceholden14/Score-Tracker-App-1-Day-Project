@@ -116,10 +116,17 @@ button {
 .game-section-li {
   font-size: 20px;
   font-weight: 600;
+  text-transform: capitalize;
 }
 
 #alltime-scoreboard {
   border: 8px solid #000000;
+  margin-top: 10px;
+  padding: 0px 10px 20px 20px;
+}
+
+#danger-zone {
+  border: 8px solid #b61c1c;
   margin-top: 10px;
   padding: 0px 10px 20px 20px;
 }

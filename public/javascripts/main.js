@@ -85,7 +85,7 @@ function createScoreSection(data) {
     section.setAttribute('id', `${gametype}Section`);
     section.className = `game-section-container`;
     article.className = `game-article-container`;
-    title.textContent = `${gametype} - top 10`;
+    title.textContent = `${gametype}`;
     mainScoreboard.appendChild(section);
     section.appendChild(title);
     section.appendChild(article);
@@ -150,21 +150,6 @@ function printText() { //TODO delete dev test only
 function reloadPage(){
     window.location.reload();
 }
-
-// function resetPlayerCount() {
-//     const scoreInputList = document.querySelector('#scoreInputList');
-//     const gametypeDatalist = document.querySelector('#gametypeInput');
-//     const uploadButton = document.querySelector('#score-save-button');
-//     gametypeDatalist[0].value = "";
-//     scoreInputBox.removeChild(uploadButton)
-//     playerNumbers.disabled = false;
-//     playerCountButton.disabled = false;
-//     scoreInputList.innerHTML = "";
-//     playerNumbers.value = "";
-//     resetPlayerCountButton.disabled = true; 
-      
-// };
-
 
 setPlayerCountButton.addEventListener('click', renderInputItems);
 resetPlayerCountButton.addEventListener('click', reloadPage);
