@@ -57,6 +57,7 @@ function createGameTypeSelector() {
     gametypeInputList.setAttribute('list', 'gametypes');
     gametypeInputList.setAttribute('name', 'gametype');
     gametypeInputList.setAttribute('id', 'gametypeInput');
+    gametypeInputList.setAttribute('placeholder', 'Select / Type');
     // gametypeInputList.setAttribute('placeholder', 'Select game type');
     
     gametypeDatalist.setAttribute('id', 'gametypes');
@@ -84,7 +85,7 @@ function createScoreSection(data) {
     section.setAttribute('id', `${gametype}Section`);
     section.className = `game-section-container`;
     article.className = `game-article-container`;
-    title.textContent = `${gametype} top 10`;
+    title.textContent = `${gametype} - top 10`;
     mainScoreboard.appendChild(section);
     section.appendChild(title);
     section.appendChild(article);
