@@ -4,7 +4,6 @@ const scoreInputBox = document.querySelector('#scoreInput');
 const playerNumbers = document.querySelector('#playerCount');
 const playerCountButton = document.querySelector('#setPlayerCount');
 
-
 let existingGameTypes;
 
 async function getScoreData(gametype) {
@@ -20,26 +19,16 @@ async function getUniqueGameTypes() {
     const uniqueGames = data.result;
     existingGameTypes = uniqueGames;
     initScoreBoxes(uniqueGames);
-    createGameTypeSelector()
 };
 
-
-
-async function addScoreData() {
+function collectInputDataFromPage() {
     const nameDataFromInput = document.querySelectorAll('.player-name-input')
     const scoreDataFromInput = document.querySelectorAll('.player-score-input')
-    const gametypeDatalist = document.querySelectorAll('#gametypeInput')
-    let combinedFinalData = [];
+    let combinedFinalData = {};
     nameDataFromInput.forEach((nameValue, index) => {
-        combinedFinalData.push({ playername: nameValue.value, score: Number(scoreDataFromInput[index].value), gametype: gametypeDatalist[0].value });
+        combinedFinalData[index] = { playername: nameValue.value, score: Number(scoreDataFromInput[index].value) };
     });
-    await fetch(`/scores`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(combinedFinalData)
-    });
-    // gametypeDatalist[0].value = "";
-    reloadPage();
+    return combinedFinalData;
 };
 
 function initScoreBoxes(gameTypeData){
@@ -49,30 +38,29 @@ function initScoreBoxes(gameTypeData){
 };
 
 function createGameTypeSelector() {
-    let gametypeInputList = document.createElement('input');
-    let gametypeDatalist = document.createElement('datalist');
-    let br = document.createElement('br');
-    let label = document.createElement('label');
+    // let gametypeInputList = document.createElement('input');
+    let gametypeDatalist = document.querySelector('datalist');
+    // let br = document.createElement('br');
+    
 
-    gametypeInputList.setAttribute('list', 'gametypes');
-    gametypeInputList.setAttribute('name', 'gametype');
-    gametypeInputList.setAttribute('id', 'gametypeInput');
+    // gametypeInputList.setAttribute('list', 'gametypes');
+    // gametypeInputList.setAttribute('name', 'gametype');
     // gametypeInputList.setAttribute('placeholder', 'Select game type');
     
-    gametypeDatalist.setAttribute('id', 'gametypes');
-
-    label.textContent = "Select or add a new game type: "
+    // gametypeDatalist.setAttribute('id', 'gametypes');
 
     existingGameTypes.forEach((value) => {
         let option = document.createElement('option');
-        option.value = value.gametype;
+        option.setAttribute('value', value.gametype)
         gametypeDatalist.appendChild(option);
     });
-    label.appendChild(gametypeInputList)
-    label.appendChild(gametypeDatalist)
-    scoreInputBox.insertAdjacentElement('afterbegin', br);
-    scoreInputBox.insertAdjacentElement('afterbegin', label);
+    // scoreInputBox.appendChild(gametypeDatalist)
+    // scoreInputBox.appendChild(gametypeInputList)
+    
+
+    // scoreInputBox.insertAdjacentElement('afterbegin', gametypeDatalist);
     // scoreInputBox.insertAdjacentElement('afterbegin', gametypeInputList)
+    // scoreInputBox.insertAdjacentElement('afterbegin', br);
 }
 
 function createScoreSection(data) {
@@ -130,15 +118,15 @@ function renderInputItems() { //becomes create?
     playerCountButton.disabled = true;
     resetPlayerCountButton.disabled = false;
     scoreInputBox.appendChild(ul)
-    // createGameTypeSelector()
-    renderScoreSaveButton() //
+    renderScoreSaveButton()
+     //
 };
 
 function renderScoreSaveButton() { //is create?
     let uploadButton = document.createElement('button');
     uploadButton.textContent = `Save`
     uploadButton.setAttribute('id', 'score-save-button')
-    uploadButton.addEventListener('click', addScoreData); 
+    uploadButton.addEventListener('click', collectInputDataFromPage); 
     scoreInputBox.appendChild(uploadButton) //return to render
 }
 
@@ -146,26 +134,18 @@ function printText() { //TODO delete dev test only
     console.log('***working***')
 }
 
-function reloadPage(){
-    window.location.reload();
-}
-
-// function resetPlayerCount() {
-//     const scoreInputList = document.querySelector('#scoreInputList');
-//     const gametypeDatalist = document.querySelector('#gametypeInput');
-//     const uploadButton = document.querySelector('#score-save-button');
-//     gametypeDatalist[0].value = "";
-//     scoreInputBox.removeChild(uploadButton)
-//     playerNumbers.disabled = false;
-//     playerCountButton.disabled = false;
-//     scoreInputList.innerHTML = "";
-//     playerNumbers.value = "";
-//     resetPlayerCountButton.disabled = true; 
-      
-// };
-
+function resetPlayerCount() {
+    const scoreInputList = document.querySelector('#scoreInputList');
+    playerNumbers.disabled = false;
+    playerCountButton.disabled = false;
+    scoreInputList.innerHTML = "";
+    playerNumbers.value = "";
+    resetPlayerCountButton.disabled = true;   
+};
 
 setPlayerCountButton.addEventListener('click', renderInputItems);
-resetPlayerCountButton.addEventListener('click', reloadPage);
+resetPlayerCountButton.addEventListener('click', resetPlayerCount);
 
 getUniqueGameTypes()
+
+createGameTypeSelector()
