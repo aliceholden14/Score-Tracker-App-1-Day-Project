@@ -5,6 +5,8 @@ const {
   getTopTenScores,
   getUniqueGameTypes,
   addNewPlayerScores,
+  deleteGametype,
+  getUniquePlayerNames,
 }=require('../model/scores')
 
 /* GET home page. */
@@ -31,5 +33,18 @@ router.post('/scores', async (req, res) => {
   const response = await addNewPlayerScores(req.body)
   res.send( response )
 });
+
+router.delete('/scores', async (req, res) => {
+  //console.log(req.query.game);
+  const response = await deleteGametype(req.query.game);
+})
+
+router.get('/scores/players', async (req, res) => {
+  //console.log(req.query.players);
+  const uniquePlayers = await getUniquePlayerNames();
+  //console.log(uniquePlayers);
+  res.json({ result: uniquePlayers });
+})
+
 
 module.exports = router;

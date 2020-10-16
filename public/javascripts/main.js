@@ -3,15 +3,23 @@ const resetPlayerCountButton = document.querySelector('#resetPlayerCount');
 const scoreInputBox = document.querySelector('#scoreInput');
 const playerNumbers = document.querySelector('#playerCount');
 const playerCountButton = document.querySelector('#setPlayerCount');
+const removeGametypeButton = document.querySelector('#remove-gametype-button');
 
-
-let existingGameTypes;
+let existingGameTypes, existingPlayers;
 
 async function getScoreData(gametype) {
     const response = await fetch(`/scores/${gametype}`);
     const data = await response.json();
     const scoreData = data.result;
     setTimeout(createScoreSection(scoreData), 2000)
+};
+
+async function getUniquePlayers() {
+    const response = await fetch(`/scores/players`);
+    const data = await response.json();
+    console.log(data);
+    //const uniquePlayers = data.result;
+    //existingPlayers = uniquePlayers;
 };
 
 async function getUniqueGameTypes() {
@@ -51,6 +59,16 @@ function createDropdownOptions(optionValues, selectIdToUpdate) {
         option.setAttribute('value', value.gametype)
         parentElement.appendChild(option);
     });   
+}
+
+async function deleteGametype(){
+    const itemToDelete = document.querySelector('#remove-gametype-dropdown')
+    //console.log(itemToDelete.value)
+    const response = fetch (`/scores/?game=${itemToDelete.value}`, {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+    });
+    setTimeout(reloadPage(), 1000);
 }
 
 function initScoreBoxes(gameTypeData){
@@ -164,5 +182,7 @@ function reloadPage(){
 
 setPlayerCountButton.addEventListener('click', renderInputItems);
 resetPlayerCountButton.addEventListener('click', reloadPage);
+removeGametypeButton.addEventListener('click', deleteGametype);
 
 getUniqueGameTypes()
+getUniquePlayers()

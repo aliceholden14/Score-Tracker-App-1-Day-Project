@@ -23,4 +23,10 @@ module.exports = {
         const playerNames = await query(sqlUniquePlayerNames);
         return playerNames.rows;
     },
-}
+    deleteGametype: async (gametype) => {
+        const sqlGameType = "DELETE FROM scores WHERE gametype = $1"; 
+        await query(sqlGameType, [gametype]);
+        return { success : true };
+    },
+    
+ }
