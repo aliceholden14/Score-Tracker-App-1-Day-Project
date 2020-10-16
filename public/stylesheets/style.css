@@ -6,7 +6,9 @@
 body {
   padding: 50px;
   font: 14px "roboto", Helvetica, Arial, sans-serif;
-  border: 8px solid #000000;
+  border: 5px solid #E6FFFF;
+  background-color: #0C141F;
+  color: #ffffff;
 }
 
 header {
@@ -21,13 +23,16 @@ h1 {
 h2 {
   font-size: 35px;
   font-weight: 500;
+  color: #DF740C;
   font-family: 'Russo One', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   margin: 15px 0;
 }
 
 h3 {
   font-size: 25px;
-  font-weight: 900;
+  font-weight: 600;
+  color: #E6FFFF;
+  font-family: 'Russo One', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   text-transform: capitalize;
 }
 
@@ -37,8 +42,7 @@ main {
 }
 
 input {
-  border: 2px solid #000000;
-  border-radius: 5%;
+  border: 2px solid #E6FFFF;
 }
 
 #scoreInputList {
@@ -55,7 +59,7 @@ input {
 }
 
 #scores-input {
-  border: 8px solid #000000;
+  border: 5px solid #6FC3DF;
   margin-top: 10px;
   padding: 0px 10px 20px 20px;
 }
@@ -78,7 +82,7 @@ input {
 
 button {
   margin-right: 10px;
-  background-color: #000000;
+  background-color: #DF740C;
   color: #ffffff;
   padding: 5px 10px;
   text-decoration: none;
@@ -86,7 +90,7 @@ button {
 }
 
 #main-scoreboard-outer-container {
-  border: 8px solid #000000;
+  border: 5px solid #6FC3DF;
   margin-top: 10px;
   padding: 0px 10px 20px 20px;
 }
@@ -98,7 +102,7 @@ button {
 }
 
 .game-section-container{
-  border: 8px solid #000000;
+  border: 5px solid #FFE64D;
   width: 250px;
   margin: 5px 5px;
   display: flex;
@@ -108,7 +112,7 @@ button {
 }
 
 .game-article-container {
-  border: 8px solid #000000;
+  border: 5px solid #DF740C;
   text-align: left;
   min-height: 280px;
 }
@@ -120,15 +124,35 @@ button {
 }
 
 #alltime-scoreboard {
-  border: 8px solid #000000;
+  border: 5px solid #6FC3DF;
   margin-top: 10px;
   padding: 0px 10px 20px 20px;
 }
 
 #danger-zone {
-  border: 8px solid #b61c1c;
+  border: 5px solid #DF740C;
   margin-top: 10px;
   padding: 0px 10px 20px 20px;
+}
+
+
+
+.glow {
+  font-size: 80px;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  -webkit-animation: glow 1s ease-in-out infinite alternate;
+  -moz-animation: glow 1s ease-in-out infinite alternate;
+  animation: glow 1s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes glow {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #DF740C, 0 0 40px #DF740C, 0 0 50px #DF740C, 0 0 60px #DF740C, 0 0 70px #DF740C;
+  }
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px #FFE64D, 0 0 40px #FFE64D, 0 0 50px #FFE64D, 0 0 60px #FFE64D, 0 0 70px #FFE64D, 0 0 80px #FFE64D;
+  }
 }
 
 @media(max-width: 675px) {
@@ -155,22 +179,16 @@ button {
     margin: 0px
   }
 
-}
-
-.glow {
-  font-size: 80px;
-  color: rgb(251, 251, 251);
-  text-align: center;
-  -webkit-animation: glow 1s ease-in-out infinite alternate;
-  -moz-animation: glow 1s ease-in-out infinite alternate;
-  animation: glow 1s ease-in-out infinite alternate;
-}
-
-@-webkit-keyframes glow {
-  from {
-    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+  .glow {
+    font-size: 60px;
   }
-  to {
-    text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+
+  #gametypeInput {
+    margin-top: 10px;
   }
+
+  body {
+    padding: 25px;
+  }
+
 }

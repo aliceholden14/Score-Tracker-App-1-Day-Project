@@ -17,5 +17,10 @@ module.exports = {
             const response = await query(sqlAddNewScores, [value.playername, value.score, value.gametype]);
             return { success: true };
         })
-    }
+    },
+    getUniquePlayerNames: async _ => {
+        const sqlUniquePlayerNames = "SELECT DISTINCT(playername) FROM scores";
+        const playerNames = await query(sqlUniquePlayerNames);
+        return playerNames.rows;
+    },
 }

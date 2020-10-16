@@ -21,9 +21,8 @@ async function getUniqueGameTypes() {
     existingGameTypes = uniqueGames;
     initScoreBoxes(uniqueGames);
     createGameTypeSelector()
+    createDropdownOptions(existingGameTypes, 'remove-gametype-dropdown')
 };
-
-
 
 async function addScoreData() {
     const nameDataFromInput = document.querySelectorAll('.player-name-input')
@@ -41,6 +40,18 @@ async function addScoreData() {
     // gametypeDatalist[0].value = "";
     reloadPage();
 };
+
+function createDropdownOptions(optionValues, selectIdToUpdate) {
+    const parentElement = document.querySelector(`#${selectIdToUpdate}`);
+
+    optionValues.forEach((value) => {
+        const option = document.createElement('option');
+        option.className = 'option-dropdown'
+        option.textContent = value.gametype
+        option.setAttribute('value', value.gametype)
+        parentElement.appendChild(option);
+    });   
+}
 
 function initScoreBoxes(gameTypeData){
     gameTypeData.forEach((value) => {
