@@ -1,25 +1,16 @@
 # Energiser Score Tracker
 
-We will be building our first full stack app. It will be a chance to embed everything we've learnt so far and practice breaking down problems into solvable chunks.
+For this one day project, Will Edwards and I worked together on producing a score tracker as our first ever full stack app.
 
-## Requirements
+We were given the requirements of:
 
 - Must use a Database for persistent storage
 - Must use the model pattern to allow easy interaction with the data
 - Must use an REST API server to manage requests and serve back data
 - Must have a front end which allows users to at least view the data
 
-The rest is up to you!
+## Stretch Goals
 
-
-##functions
-GET top 10 scores for any game
-view scores (front page)
-view scores (small pages)
-add new scores 
-delete scores
-update scores
-get scores for a single user
-
-##tables
-scores table
+- Deploy and fix CORS errors.
+- CSS Styling needs to be amended.
+- Refactor and commenting in code.
